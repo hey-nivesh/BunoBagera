@@ -9,8 +9,8 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get("auth-token")?.value;
   const authed = !!token;
 
-  // Redirect unauthenticated users away from dashboard
-  if (pathname.startsWith(DASHBOARD_PREFIX) && !authed) {
+  // Redirect unauthenticated users away from dashboard, except for the GitHub callback
+  if (pathname.startsWith(DASHBOARD_PREFIX) && pathname !== "/dashboard/github/callback" && !authed) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     return NextResponse.redirect(url);

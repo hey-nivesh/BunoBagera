@@ -1,6 +1,11 @@
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
+  const apiOrigin = process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
+
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#09090b] px-4">
+      {/* Preconnect to API to optimize login speed */}
+      <link rel="preconnect" href={apiOrigin} crossOrigin="anonymous" />
+      <link rel="dns-prefetch" href={apiOrigin} />
       {/* Ambient violet radial glow */}
       <div
         className="pointer-events-none absolute inset-0"

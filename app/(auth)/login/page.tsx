@@ -10,7 +10,7 @@ const inputCls =
   "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-zinc-600 backdrop-blur-sm transition-colors duration-200 focus:border-violet-500/50 focus:outline-none focus:ring-1 focus:ring-violet-500/30";
 
 export default function LoginPage() {
-  const { signIn } = useAuth();
+  const { signIn, signInWithGithub, setAuthActionLoading } = useAuth();
   const router = useRouter();
 
   const [email, setEmail]       = useState("");
@@ -22,14 +22,25 @@ export default function LoginPage() {
     e.preventDefault();
     if (!email || !password) { setError("Please fill in all fields."); return; }
     setLoading(true);
+    setAuthActionLoading("Signing in to your account...");
     setError("");
     try {
       await signIn(email, password);
       router.replace("/dashboard");
     } catch {
       setError("Invalid credentials. Try again.");
-    } finally {
+      setAuthActionLoading(null);
       setLoading(false);
+    }
+  }
+
+  function handleGithubLogin() {
+    setAuthActionLoading("Redirecting to GitHub...");
+    try {
+      signInWithGithub();
+    } catch (err: any) {
+      setError("Could not redirect to GitHub. Try again.");
+      setAuthActionLoading(null);
     }
   }
 
@@ -74,6 +85,7 @@ export default function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className={inputCls}
+            autoFocus
           />
         </div>
 
@@ -117,7 +129,7 @@ export default function LoginPage() {
       {/* GitHub */}
       <button
         type="button"
-        onClick={() => {/* OAuth placeholder */}}
+        onClick={handleGithubLogin}
         className="flex w-full items-center justify-center gap-2.5 rounded-xl border border-white/10 bg-white/5 py-3 text-sm font-medium text-white transition-all duration-200 hover:bg-white/10 hover:border-white/20 active:scale-[0.98]"
       >
         <IconBrandGithub className="h-4.5 w-4.5" />

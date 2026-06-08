@@ -10,7 +10,7 @@ const inputCls =
   "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-zinc-600 backdrop-blur-sm transition-colors duration-200 focus:border-violet-500/50 focus:outline-none focus:ring-1 focus:ring-violet-500/30";
 
 export default function SignupPage() {
-  const { signUp } = useAuth();
+  const { signUp, signInWithGithub, setAuthActionLoading } = useAuth();
   const router = useRouter();
 
   const [name, setName]           = useState("");
@@ -35,14 +35,25 @@ export default function SignupPage() {
       return;
     }
     setLoading(true);
+    setAuthActionLoading("Creating your account...");
     setError("");
     try {
       await signUp(name, email, password);
       router.replace("/dashboard");
     } catch {
       setError("Something went wrong. Please try again.");
-    } finally {
+      setAuthActionLoading(null);
       setLoading(false);
+    }
+  }
+
+  function handleGithubLogin() {
+    setAuthActionLoading("Redirecting to GitHub...");
+    try {
+      signInWithGithub();
+    } catch (err: any) {
+      setError("Could not redirect to GitHub. Try again.");
+      setAuthActionLoading(null);
     }
   }
 
@@ -87,6 +98,7 @@ export default function SignupPage() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             className={inputCls}
+            autoFocus
           />
         </div>
 
@@ -155,7 +167,7 @@ export default function SignupPage() {
       {/* GitHub */}
       <button
         type="button"
-        onClick={() => {/* OAuth placeholder */}}
+        onClick={handleGithubLogin}
         className="flex w-full items-center justify-center gap-2.5 rounded-xl border border-white/10 bg-white/5 py-3 text-sm font-medium text-white transition-all duration-200 hover:bg-white/10 hover:border-white/20 active:scale-[0.98]"
       >
         <IconBrandGithub className="h-4.5 w-4.5" />
