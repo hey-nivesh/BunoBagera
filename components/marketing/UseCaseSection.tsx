@@ -59,7 +59,7 @@ export default function UseCaseSection() {
             <span style={{ color: ACCENT }}>Dev Teams</span>
           </h2>
           <p className="max-w-xl text-base leading-relaxed text-zinc-500 font-sans">
-            From solo developers to enterprise teams &mdash; BuboBagera adapts perfectly to every engineering workflow.
+            From solo developers to enterprise teams &mdash; BunoBagera adapts perfectly to every engineering workflow.
           </p>
         </div>
 

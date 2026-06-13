@@ -10,7 +10,7 @@ import ContactSection from "@/components/marketing/ContactSection";
 import Footer from "@/components/marketing/Footer";
 
 export const metadata: Metadata = {
-  title: "BuboBagera — Smart AI Code Reviewer for Real Projects",
+  title: "BunoBagera — Smart AI Code Reviewer for Real Projects",
   description: "Identify issues, optimize code, and deploy cleaner codebases. AI-assisted automated code reviews matching your team's rules.",
   keywords: [
     "AI code review tool",
@@ -25,17 +25,17 @@ export const metadata: Metadata = {
     "code refactoring AI assistant"
   ],
   openGraph: {
-    title: "BuboBagera — Smart AI Code Reviewer for Real Projects",
+    title: "BunoBagera — Smart AI Code Reviewer for Real Projects",
     description: "Identify issues, optimize code, and deploy cleaner codebases. AI-assisted automated code reviews matching your team's rules.",
     type: "website",
     locale: "en_US",
-    siteName: "BuboBagera",
+    siteName: "BunoBagera",
   },
   twitter: {
     card: "summary_large_image",
-    title: "BuboBagera — Smart AI Code Reviewer for Real Projects",
+    title: "BunoBagera — Smart AI Code Reviewer for Real Projects",
     description: "Identify issues, optimize code, and deploy cleaner codebases. AI-assisted automated code reviews matching your team's rules.",
-    creator: "@BuboBagera",
+    creator: "@BunoBagera",
   },
 };
 

@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   title: {
-    default: "BuboBagera — Smart AI Code Reviewer",
-    template: "%s | BuboBagera",
+    default: "BunoBagera — Smart AI Code Reviewer",
+    template: "%s | BunoBagera",
   },
   description: "Advanced AI-powered code review and automated pull request analysis for real production projects.",
   keywords: [
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
     "code smell detector",
     "security vulnerability scanner"
   ],
-  authors: [{ name: "BuboBagera Team" }],
-  creator: "BuboBagera",
-  publisher: "BuboBagera",
+  authors: [{ name: "BunoBagera Team" }],
+  creator: "BunoBagera",
+  publisher: "BunoBagera",
   robots: {
     index: true,
     follow: true,

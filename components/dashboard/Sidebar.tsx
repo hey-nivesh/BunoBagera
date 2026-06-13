@@ -44,10 +44,10 @@ export default function Sidebar() {
           className="flex h-8 w-8 flex-shrink-0 items-center justify-center"
           style={{ background: ACCENT, clipPath: "polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%)" }}
         >
-          <span className="text-[10px] font-black text-black">CS</span>
+          <span className="text-[10px] font-black text-black">BB</span>
         </div>
         <span className="text-[15px] font-black tracking-tight text-white uppercase">
-          BuboBagera
+          BunoBagera
         </span>
       </div>
 

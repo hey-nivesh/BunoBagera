@@ -18,7 +18,7 @@ export default function NavBar() {
       {/* ── Logo ── */}
       <div className="flex items-center pl-8 pr-12 bg-[#050505] z-10">
         <Link href="/" className="flex items-center gap-1 select-none">
-          <span className="text-[18px] font-black tracking-widest text-white uppercase">BuboBagera</span>
+          <span className="text-[18px] font-black tracking-widest text-white uppercase">BunoBagera</span>
           <span className="text-[18px] font-black tracking-widest uppercase" style={{ color: "#ccff00" }}>&nbsp;AI</span>
         </Link>
       </div>

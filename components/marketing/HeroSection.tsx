@@ -47,7 +47,7 @@ export default function HeroSection() {
         >
           Code<br />
           Smarter With<br />
-          <span style={{ color: "#ccff00", display: "block" }}>BuboBagera</span>
+          <span style={{ color: "#ccff00", display: "block" }}>BunoBagera</span>
         </h1>
 
         <p className="mt-8 max-w-lg text-base text-zinc-400 leading-relaxed font-sans">
@@ -108,7 +108,7 @@ export default function HeroSection() {
 
           <div className="p-10 pr-[45%] min-h-[220px] flex flex-col justify-center">
             <h2 className="text-2xl font-black text-white uppercase tracking-tight leading-tight mb-3">
-              BuboBagera&mdash;<br />AI Assistant
+              BunoBagera&mdash;<br />AI Assistant
             </h2>
             <p className="text-sm text-zinc-400 leading-relaxed font-sans">
               Connect your repositories, get auto-generated code reviews, enforce standards, and ship faster.

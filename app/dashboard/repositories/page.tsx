@@ -86,7 +86,7 @@ export default function RepositoriesPage() {
       {/* ── Header & Filters ── */}
       <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
         <div className="relative flex-1 max-w-md w-full">
-          <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
+          <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400 z-10 pointer-events-none" />
           <input
             type="text"
             placeholder="Search repositories..."
@@ -96,17 +96,18 @@ export default function RepositoriesPage() {
           />
         </div>
         <div className="relative shrink-0">
-          <IconFilter className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
+          <IconFilter className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400 z-10 pointer-events-none" />
           <select
             value={languageFilter}
             onChange={(e) => setLanguageFilter(e.target.value)}
-            className="appearance-none rounded-xl border border-white/10 bg-white/5 pl-10 pr-10 py-2 text-sm text-white focus:border-violet-500/50 focus:outline-none focus:ring-1 focus:ring-violet-500/30 transition-all backdrop-blur-sm"
+            style={{ colorScheme: "dark" }}
+            className="appearance-none rounded-xl border border-white/10 bg-zinc-900 pl-10 pr-10 py-2 text-sm text-white focus:border-violet-500/50 focus:outline-none focus:ring-1 focus:ring-violet-500/30 transition-all"
           >
-            <option value="All">All Languages</option>
-            <option value="TypeScript">TypeScript</option>
-            <option value="Python">Python</option>
-            <option value="Go">Go</option>
-            <option value="Rust">Rust</option>
+            <option value="All" className="bg-zinc-900 text-white">All Languages</option>
+            <option value="TypeScript" className="bg-zinc-900 text-white">TypeScript</option>
+            <option value="Python" className="bg-zinc-900 text-white">Python</option>
+            <option value="Go" className="bg-zinc-900 text-white">Go</option>
+            <option value="Rust" className="bg-zinc-900 text-white">Rust</option>
           </select>
         </div>
       </div>

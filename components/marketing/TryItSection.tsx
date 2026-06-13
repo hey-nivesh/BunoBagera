@@ -48,7 +48,7 @@ export default function TryItSection() {
             Get Started
           </p>
           <h2 className="mb-5 text-4xl font-black uppercase tracking-tighter text-white sm:text-5xl md:text-6xl">
-            Try BuboBagera<br />
+            Try BunoBagera<br />
             <span style={{ color: ACCENT }}>in Seconds</span>
           </h2>
           <p className="mx-auto max-w-xl text-base leading-relaxed text-zinc-500 font-sans">

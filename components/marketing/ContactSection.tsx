@@ -193,7 +193,7 @@ export default function ContactSection() {
             }}
           >
             <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#ccff00]" />
-            BuboBagera &middot; Powered by Claude
+            BunoBagera &middot; Powered by Claude
           </div>
         </div>
       </div>

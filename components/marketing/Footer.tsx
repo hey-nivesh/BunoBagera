@@ -21,13 +21,13 @@ export default function Footer() {
           {/* Logo + copyright */}
           <div className="flex items-center gap-3">
             <div
-              className="flex h-8 w-8 items-center justify-center"
-              style={{ background: ACCENT, clipPath: "polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%)" }}
+              className="flex h-8 w-8 items-center justify-center overflow-hidden"
+              style={{ clipPath: "polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%)" }}
             >
-              <span className="text-[10px] font-black text-black">CS</span>
+              <img src="/logo.png" alt="Logo" className="h-full w-full object-cover" />
             </div>
             <span className="text-sm text-zinc-600">
-              &copy; {year} BuboBagera. All rights reserved.
+              &copy; {year} BunoBagera. All rights reserved.
             </span>
           </div>
 

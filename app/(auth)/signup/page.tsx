@@ -65,7 +65,7 @@ export default function SignupPage() {
           <IconCode className="h-6 w-6 text-white" stroke={2} />
         </div>
         <span className="text-lg font-semibold text-white tracking-tight">
-          BuboBagera
+          BunoBagera
         </span>
       </div>
 

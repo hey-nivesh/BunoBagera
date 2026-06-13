@@ -187,7 +187,7 @@ export default function SettingsPage() {
               <div className="h-px w-full bg-white/5" />
               <ToggleRow 
                 title="PR Review Comments" 
-                description="BuboBagera will automatically comment on your GitHub PRs."
+                description="BunoBagera will automatically comment on your GitHub PRs."
                 checked={prAlerts}
                 onChange={() => setPrAlerts(!prAlerts)}
               />

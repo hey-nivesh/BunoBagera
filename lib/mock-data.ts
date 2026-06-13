@@ -52,7 +52,7 @@ export type IssueResult = {
 export const MOCK_USER: User = {
   id: "usr_01",
   name: "Alex Johnson",
-  email: "alex@bubobagera.ai",
+  email: "alex@bunobagera.ai",
   githubConnected: true,
   githubUsername: "alexjohnson",
   plan: "pro",
