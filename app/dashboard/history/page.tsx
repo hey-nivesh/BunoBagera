@@ -6,6 +6,32 @@ import { LANGUAGE_COLORS } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
+function TableSkeleton() {
+  return (
+    <>
+      {[...Array(5)].map((_, i) => (
+        <tr key={i} className="animate-pulse bg-white/[0.01]">
+          <td className="px-6 py-4">
+            <div className="h-4 bg-white/5 rounded w-16" />
+          </td>
+          <td className="px-6 py-4">
+            <div className="h-4 bg-white/5 rounded w-36" />
+          </td>
+          <td className="px-6 py-4">
+            <div className="h-4 bg-white/5 rounded w-20" />
+          </td>
+          <td className="px-6 py-4">
+            <div className="h-4 bg-white/5 rounded w-16" />
+          </td>
+          <td className="px-6 py-4 text-right">
+            <div className="h-4 bg-white/5 rounded w-12 ml-auto" />
+          </td>
+        </tr>
+      ))}
+    </>
+  );
+}
+
 export default function HistoryPage() {
   const [reviews, setReviews] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -37,14 +63,6 @@ export default function HistoryPage() {
     fetchHistory();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-[50vh]">
-        <IconLoader2 className="w-8 h-8 animate-spin text-violet-500" />
-      </div>
-    );
-  }
-
   if (error) {
     return <div className="text-red-400">Error: {error}</div>;
   }
@@ -65,56 +83,59 @@ export default function HistoryPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-white/10">
-              {reviews.length === 0 ? (
+              {loading ? (
+                <TableSkeleton />
+              ) : reviews.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-8 text-center text-zinc-500">
                     No review history found. Go scan a repository!
                   </td>
                 </tr>
-              ) : null}
-              {reviews.map((item, i) => (
-                <tr
-                  key={item.id}
-                  className={cn(
-                    "transition-colors hover:bg-white/5",
-                    i % 2 === 0 ? "bg-transparent" : "bg-white/[0.02]"
-                  )}
-                >
-                  <td className="whitespace-nowrap px-6 py-4 text-zinc-400">
-                    {new Date(item.createdAt).toLocaleDateString()}
-                  </td>
-                  <td className="px-6 py-4 font-medium text-white">
-                    <div className="flex items-center gap-2">
-                      <IconBrandGithub className="h-4 w-4 text-zinc-500" />
-                      {item.repositoryName}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className={cn("inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium", LANGUAGE_COLORS.default)}>
-                      Auto-detected
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span
-                      className={cn(
-                        "inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium border",
-                        item.status === "completed"
-                          ? "bg-green-500/20 text-green-400 border-green-500/30"
-                          : item.status === "pending"
-                          ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
-                          : "bg-red-500/20 text-red-400 border-red-500/30"
-                      )}
-                    >
-                      {item.status.charAt(0).toUpperCase() + item.status.slice(1)}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4 text-right">
-                    <Link href={`/dashboard/review/scan?reviewId=${item.id}&owner=${item.repositoryOwner}&repo=${item.repositoryName}`} className="text-violet-400 font-medium hover:text-violet-300 transition-colors">
-                      View Chat
-                    </Link>
-                  </td>
-                </tr>
-              ))}
+              ) : (
+                reviews.map((item, i) => (
+                  <tr
+                    key={item.id}
+                    className={cn(
+                      "transition-colors hover:bg-white/5",
+                      i % 2 === 0 ? "bg-transparent" : "bg-white/[0.02]"
+                    )}
+                  >
+                    <td className="whitespace-nowrap px-6 py-4 text-zinc-400">
+                      {new Date(item.createdAt).toLocaleDateString()}
+                    </td>
+                    <td className="px-6 py-4 font-medium text-white">
+                      <div className="flex items-center gap-2">
+                        <IconBrandGithub className="h-4 w-4 text-zinc-500" />
+                        {item.repositoryName}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span className={cn("inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium", LANGUAGE_COLORS.default)}>
+                        Auto-detected
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span
+                        className={cn(
+                          "inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium border",
+                          item.status === "completed"
+                            ? "bg-green-500/20 text-green-400 border-green-500/30"
+                            : item.status === "pending"
+                            ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
+                            : "bg-red-500/20 text-red-400 border-red-500/30"
+                        )}
+                      >
+                        {item.status.charAt(0).toUpperCase() + item.status.slice(1)}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 text-right">
+                      <Link href={`/dashboard/review/scan?reviewId=${item.id}&owner=${item.repositoryOwner}&repo=${item.repositoryName}`} className="text-violet-400 font-medium hover:text-violet-300 transition-colors">
+                        View Chat
+                      </Link>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

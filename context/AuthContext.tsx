@@ -159,7 +159,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const params = new URLSearchParams({
       client_id: GITHUB_CLIENT_ID,
       redirect_uri: `${window.location.origin}/dashboard/github/callback`,
-      scope: "read:user user:email",
+      scope: "repo read:user user:email",
       state,
     });
 

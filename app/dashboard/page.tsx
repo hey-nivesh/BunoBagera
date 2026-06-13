@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import StatCard from "@/components/dashboard/StatCard";
 import CircularProgress from "@/components/dashboard/CircularProgress";
+import GithubAnalyzer from "@/components/dashboard/GithubAnalyzer";
 import {
   IconTrendingUp,
   IconAlertTriangle,
@@ -65,8 +66,21 @@ export default function DashboardHome() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[50vh]">
-        <IconLoader2 className="w-8 h-8 animate-spin text-violet-500" />
+      <div className="space-y-6 animate-pulse">
+        {/* Stats Row Skeleton */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="rounded-xl border border-white/10 bg-white/5 p-5 h-24"></div>
+          ))}
+        </div>
+        {/* Main Content Skeleton */}
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <div className="lg:col-span-2 rounded-xl border border-white/10 bg-white/5 h-80"></div>
+          <div className="flex flex-col gap-6">
+            <div className="rounded-xl border border-white/10 bg-white/5 h-36"></div>
+            <div className="rounded-xl border border-white/10 bg-white/5 h-56"></div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -96,6 +110,9 @@ export default function DashboardHome() {
           icon={IconBrandGithub}
         />
       </div>
+
+      {/* ── GitHub Profile AI Analyzer Section ── */}
+      <GithubAnalyzer />
 
       {/* ── Main Content Grid ── */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
