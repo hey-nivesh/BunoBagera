@@ -186,7 +186,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         body: JSON.stringify({ code }),
       });
 
-      const data = await res.json();
+      let data: any = {};
+      const contentType = res.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        data = await res.json();
+      } else {
+        const text = await res.text();
+        throw new Error(`Server returned non-JSON response (${res.status}): ${text.substring(0, 100) || "Empty response"}`);
+      }
+
       if (!res.ok) throw new Error(data.error?.message || data.message || "GitHub authentication failed");
 
       setCookie("auth-token", data.jwt);
